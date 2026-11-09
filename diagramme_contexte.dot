@@ -1,0 +1,22 @@
+digraph contexte {
+  graph [rankdir=LR, bgcolor="white", pad=0.3, nodesep=0.65, ranksep=0.9, splines=polyline, label="CAR-HMS — Diagramme de contexte", labelloc=t, fontsize=18, fontname="DejaVu Sans"];
+  node [fontname="DejaVu Sans", fontsize=11, shape=box, style="rounded,filled", fillcolor="#F4F6F9", color="#64748B", penwidth=1.2, margin="0.18,0.12"];
+  edge [fontname="DejaVu Sans", fontsize=9, arrowsize=0.75, color="#475569"];
+  visiteur [label="Visiteur"];
+  randonneur [label="Randonneur"];
+  organisateur [label="Organisateur"];
+  administrateur [label="Administrateur"];
+  systeme [label="CAR-HMS\nSystème de gestion\nd'événements de randonnée", shape=box, style="rounded,filled,bold", color="#24537A", fillcolor="#DCEFFA", fontsize=14, margin="0.3,0.25"];
+  ccn [label="Catalogue des sentiers\nde la CCN"];
+  meteo [label="Service\nmétéorologique"];
+  courriel [label="Service d'envoi\nde courriels"];
+  { rank=same; visiteur; randonneur; organisateur; administrateur; }
+  { rank=same; ccn; meteo; courriel; }
+  visiteur -> systeme [label="Consultation\n/ enregistrement"];
+  randonneur -> systeme [label="Profil / inscriptions\n/ annulations", dir=both];
+  organisateur -> systeme [label="Création / annulation", dir=both];
+  administrateur -> systeme [label="Comptes / rapports", dir=both];
+  systeme -> ccn [label="Données sur les sentiers", dir=both];
+  systeme -> meteo [label="Prévisions", dir=both];
+  systeme -> courriel [label="Notifications"];
+}
